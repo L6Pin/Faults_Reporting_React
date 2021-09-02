@@ -1,0 +1,35 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.loginPage {
+  height: 100vh;
+  background: $background;
+  overflow-y: auto;
+  color: $color-dark-gray;
+  @include flex(row, center, center);
+}
+
+@media (min-width: 1024px) {
+  .loginPage-container {
+    width: 58.268229166666664vw; //895px
+    height: 41.666666666666664vw; //640px
+    background: rgba($color-white, $alpha: 0.85);
+    box-shadow: $box-shadow;
+    @include flex(row, space-between);
+    border-radius: 1.3vw; //20px
+
+    .form-container {
+      padding: 1.3vw; //20px
+      width: 65%;
+    }
+
+    .login-form-image {
+      background-image: url("../../images/login_form_image.jpg");
+      background-position: center;
+      background-size: cover;
+      width: 35%;
+      border-top-right-radius: 1.3vw; //20px
+      border-bottom-right-radius: 1.3vw; //20px
+    }
+  }
+}
