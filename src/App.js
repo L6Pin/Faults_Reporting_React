@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { LoginPage } from "./pages";
+import { LoginPage, Profile } from "./pages";
 import "./assets/styles/App.scss"
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={LoginPage} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </Router>
   );

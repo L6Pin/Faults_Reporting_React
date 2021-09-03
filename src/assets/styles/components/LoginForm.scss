@@ -111,6 +111,11 @@
         width: 9.76vw; //150px
         height: 2.6vw; //40px
         border-radius: 0.65vw; //10px;
+
+        &:hover{
+          cursor: pointer;
+          background-color: darken($color-blue , $amount: 3);
+        }
       }
     }
   }
