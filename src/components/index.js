@@ -1,4 +1,5 @@
 import LoginForm from "./LoginForm";
 import Problem from "./Problem";
+import ProblemForm from "./ProblemForm";
 
-export { LoginForm, Problem };
+export { LoginForm, Problem, ProblemForm };

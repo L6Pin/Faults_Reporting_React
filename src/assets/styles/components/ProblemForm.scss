@@ -1,0 +1,208 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.problem-form {
+  background: $color-white;
+  height: auto;
+  border-radius: $big-border-radius;
+  padding: 20px;
+  box-shadow: $box-shadow;
+
+  .problem-form-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .input {
+    margin-bottom: 20px;
+
+    .input-title {
+      margin-bottom: 10px;
+    }
+
+    input {
+      height: 35px;
+      width: 100%;
+      padding: 10px;
+      border-radius: $small-border-radius;
+      border: 0;
+      outline: none;
+      background: $color-light-gray_1;
+    }
+  }
+
+  .filter {
+    position: relative;
+    margin-bottom: 20px;
+
+    .filter-name {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .filter-options {
+      width: 100%;
+      height: 35px;
+      border: 1px solid $color-light-gray_1;
+      background: $color-white;
+      border-radius: $small-border-radius;
+      outline: none;
+      -moz-appearance: none; /* Firefox */
+      -webkit-appearance: none; /* Safari and Chrome */
+      appearance: none;
+      padding: 5px;
+    }
+    .filter-arrow {
+      background: url("../../images/select_arrow.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 23px;
+      height: 35px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+    }
+  }
+
+  .textarea {
+    margin-bottom: 20px;
+
+    .textarea-title {
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      outline: none;
+      background: $color-light-gray_1;
+      color: $color-dark-gray;
+      outline: none;
+      border: none;
+      padding: 20px;
+      width: 100%;
+      border-radius: $small-border-radius;
+    }
+  }
+
+  .report {
+    width: 120px;
+    background: $color-blue;
+    text-align: center;
+    color: $color-white;
+    border-radius: $small-border-radius;
+    padding: 10px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .problem-form {
+    height: 41.66vw; // 800px;
+
+    width: 36.45vw;
+    border-radius: 1.04vw; //20px
+    padding: 1.04vw; //20px
+
+    .problem-form-title {
+      font-size: 1.04vw; //20px
+      margin-bottom: 1.3vw; //25px;
+    }
+
+    .input {
+      margin-bottom: 1.04vw; //20px
+
+      .input-title {
+        margin-bottom: 0.52vw; //10px;
+        font-size: 0.72vw; //14px
+      }
+
+      input {
+        height: 1.45vw; //28px
+        width: 100%;
+        padding: 10px;
+        border-radius: 0.52vw; //10px;
+        border: 0;
+        outline: none;
+        background: $color-light-gray_1;
+      }
+    }
+
+    .filter {
+      margin-bottom: 1.04vw; //20px
+
+      .filter-name {
+        font-size: 0.72vw; //14px
+        margin-bottom: 0.52vw; //10px;
+      }
+
+      .filter-options {
+        height: 1.45vw; //28px
+        font-size: 0.625vw; //12px
+        padding: 0.26vw; //5px
+      }
+
+      .filter-arrow {
+        height: 1.45vw; //28px
+        width: 1.19vw; //23px
+        right: -0.23vw; //-4.5pxx
+      }
+    }
+
+    .textarea {
+      margin-bottom: 1.04vw; //20px
+
+      .textarea-title {
+        margin-bottom: 0.52vw; //10px;
+        font-size: 0.72vw; //14px
+      }
+
+      textarea {
+        outline: none;
+        background: $color-light-gray_1;
+        color: $color-dark-gray;
+        outline: none;
+        border: none;
+        padding: 1.04vw; //20px
+        width: 100%;
+        height: 9.37vw; //180px
+        border-radius: 0.52vw; //10px;
+      }
+    }
+
+    .report-container {
+      @include flex(row, space-between, center);
+
+      .report {
+        width: 6.25vw; //120px
+        text-align: center;
+        color: $color-white;
+        border-radius: 0.52vw; //10px;
+        padding: 0.52vw 0; //10px
+        font-size: 0.83vw; //16px
+        
+        &:hover{
+          cursor: pointer;
+        }
+      }
+
+      .add {
+        background: $color-blue;
+        &:hover{
+          background: darken($color-blue, $amount: 3);
+        }
+      }
+
+      .edit {
+        background: $color-orange;
+        &:hover{
+          background: darken($color-orange, $amount: 3);
+        }
+      }
+
+      .delete {
+        background: $color-red;
+        &:hover{
+          background: darken($color-red, $amount: 3);
+        }
+      }
+    }
+  }
+}
