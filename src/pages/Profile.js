@@ -18,7 +18,7 @@ const Profile = () => {
           </div>
           <div className="filters">
             <div className="search-container">
-              <input type="text" className="search" placeholder="🔎 Search" />
+              <input type="text" className="search" placeholder="Search" />
             </div>
             <p className="filter-title">Issue Filters</p>
             <div className="filter">

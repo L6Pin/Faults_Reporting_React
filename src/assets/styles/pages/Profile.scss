@@ -9,7 +9,7 @@
   overflow-y: auto;
 
   .problem-controls {
-    height: auto;
+    height: 467px;
     padding: 20px;
     margin-bottom: 20px;
     background: $color-white;
@@ -45,7 +45,6 @@
 
     .filters {
       margin-bottom: 40px;
-
       .search {
         border: 0;
         outline: 0;
@@ -55,7 +54,7 @@
         height: 60px;
         border-radius: $small-border-radius;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-size: 16px;
       }
 
@@ -66,7 +65,6 @@
       .filter {
         position: relative;
         margin-bottom: 20px;
-
         .filter-name {
           font-size: 16px;
           margin-bottom: 10px;
@@ -123,10 +121,10 @@
       @include flex(row, space-between);
       flex-direction: row-reverse;
       background: rgba(196, 196, 196, 0.85);
-      border-radius: 1.3vw; //20px
+      border-radius: 1.30vw; //20px
       width: 100%;
       height: 100%;
-      padding: 1.3vw; //20px;
+      padding: 1.30vw; //20px;
       box-shadow: $box-shadow;
 
       .problem-controls {
@@ -145,7 +143,7 @@
 
           .user-container {
             .fa-user-circle {
-              font-size: 2.6vw; //40px
+              font-size: 2.60vw; //40px
               margin-right: 0.65vw; //10px
             }
 
@@ -156,11 +154,6 @@
 
           .fa-sign-out-alt {
             font-size: 1.3vw; //20px
-
-            &:hover {
-              cursor: pointer;
-              color: darken($color-red, $amount: 3);
-            }
           }
         }
 
@@ -215,11 +208,6 @@
           margin-top: 0.97vw; //15px;
           font-size: 1.17vw; //18px
           border-radius: 1.3vw; //20px;
-
-          &:hover {
-            cursor: pointer;
-            background: darken($color-blue, $amount: 3);
-          }
         }
       }
 
