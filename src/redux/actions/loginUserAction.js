@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as problemsApi from "../../api/problems";
+import { Redirect } from "react-router";
 
 export function loginRequest() {
   return {
@@ -26,6 +27,9 @@ export function userLogin(loginObject) {
     problemsApi
       .userLogin(loginObject)
       .then((response) => dispatch(loginSuccess(response)))
-      .catch(() => dispatch(loginFailure));
+      .catch(() => {
+        alert("Incorrect username or password");
+        dispatch(loginFailure);
+      });
   };
 }

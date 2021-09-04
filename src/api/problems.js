@@ -16,7 +16,7 @@ export async function getAllProblems() {
   return problems;
 }
 
-export async function problemEdit(newProblem) {
+export async function problemPost(newProblem) {
   const response = await fetch(`${apiBaseUrl}/problems`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
@@ -36,7 +36,7 @@ export async function problemEdit(editedProblem) {
   return edit;
 }
 
-export async function userLogin(id) {
+export async function problemDelete(id) {
   const response = await fetch(`${apiBaseUrl}/problems/${id}`, {
     method: "DELETE"
   });

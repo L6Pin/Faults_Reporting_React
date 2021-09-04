@@ -9,7 +9,6 @@ export default function loginUserReducer(
     case types.LOGIN_REQUEST:
       return state;
     case types.LOGIN_SUCCESS:
-      console.log(action.response);
       return action.response;
     case types.LOGIN_FAILURE:
       alert("Incorrect login data");
