@@ -16,14 +16,18 @@ export async function getAllProblems() {
   return problems;
 }
 
+export async function getSingleProblem(id) {
+  const response = await fetch(`${apiBaseUrl}/problems/${id}`);
+  const problem = await response.json();
+  return problem;
+}
+
 export async function problemPost(newProblem) {
   const response = await fetch(`${apiBaseUrl}/problems`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(newProblem),
   });
-  const edit = await response.json();
-  return edit;
 }
 
 export async function problemEdit(editedProblem) {
@@ -38,9 +42,14 @@ export async function problemEdit(editedProblem) {
 
 export async function problemDelete(id) {
   const response = await fetch(`${apiBaseUrl}/problems/${id}`, {
-    method: "DELETE"
+    method: "DELETE",
   });
   const remove = await response.json();
   return remove;
 }
 
+export async function getAllUsers() {
+  const response = await fetch(`${apiBaseUrl}/users`);
+  const users = await response.json();
+  return users;
+}

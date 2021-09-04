@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 const LoginForm = ({ userData, userLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState(" ");
 
   let userLoginObject = {
     email: email,
@@ -31,19 +31,24 @@ const LoginForm = ({ userData, userLogin }) => {
           </div>
         </div>
         <p className="greeting-message">Good Afternoon!</p>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div className="email-container">
             <p>Email</p>
-            <input type="text" onChange={(e) => setEmail(e.target.value)} />
+            <input
+              type="text"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="password-container">
             <p>Password</p>
             <input
               type="password"
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button onClick={handleSubmit}>Login</button>
+          <button>Login</button>
         </form>
       </div>
     );

@@ -1,6 +1,5 @@
 import * as types from "./actionTypes";
 import * as problemsApi from "../../api/problems";
-import { Redirect } from "react-router";
 
 export function loginRequest() {
   return {

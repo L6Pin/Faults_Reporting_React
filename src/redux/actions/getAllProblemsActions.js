@@ -16,12 +16,13 @@ export function allProblemsFailure() {
 export function getAllProblems() {
   return (dispatch) => {
     dispatch(allProblemsRequest);
-    problemsApi.getAllProblems()
-    .then((response) => {
-        dispatch(allProblemsSuccess(response))
-    })
-    .catch((error) => {
-        dispatch(allProblemsFailure)
-    })
+    problemsApi
+      .getAllProblems()
+      .then((response) => {
+        dispatch(allProblemsSuccess(response));
+      })
+      .catch((error) => {
+        dispatch(allProblemsFailure);
+      });
   };
 }

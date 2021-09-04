@@ -1,5 +1,6 @@
 import "../assets/styles/pages/Profile.scss";
 import { Problem } from "../components";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -43,7 +44,9 @@ const Profile = () => {
               <div className="filter-arrow"></div>
             </div>
           </div>
-          <p className="report-button">Report issue</p>
+          <Link to="/report">
+            <p className="report-button">Report issue</p>
+          </Link>
         </div>
         <div className="problems">
           <div className="problems-container">
