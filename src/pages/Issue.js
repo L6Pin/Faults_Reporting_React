@@ -1,8 +1,8 @@
-import "../assets/styles/pages/ReportIssue.scss";
+import "../assets/styles/pages/Issue.scss";
 import { ProblemForm } from "../components";
 
 const ReportIssue = () => {
-  return <div className="report-issue">
+  return <div className="issue">
       <ProblemForm />
   </div>;
 };

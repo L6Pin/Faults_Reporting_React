@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { LoginPage, Profile, ReportIssue } from "./pages";
+import { LoginPage, Profile, Issue } from "./pages";
 import "./assets/styles/App.scss";
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route path="/profile" component={Profile} />
-        <Route path="/report" component={ReportIssue} />
+        <Route path="/report" component={Issue} />
+        <Route path="/edit" component={Issue} />
       </Switch>
     </Router>
   );

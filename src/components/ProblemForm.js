@@ -8,6 +8,7 @@ import { Redirect } from "react-router";
 const ProblemForm = ({ userData }) => {
   let location = useLocation();
   let history = useHistory();
+  let newProblemObject = {};
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -22,7 +23,7 @@ const ProblemForm = ({ userData }) => {
   const [description, setDescription] = useState("");
   const [userId, setUserId] = useState("");
 
-  let newProblemObject = {
+  newProblemObject = {
     problem_name: problemName,
     description: description,
     room: room,

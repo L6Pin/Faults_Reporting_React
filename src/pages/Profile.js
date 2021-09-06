@@ -50,18 +50,17 @@ const Profile = () => {
         </div>
         <div className="problems">
           <div className="problems-container">
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
+            <Link to="/edit">
+              <Problem />
+            </Link>
+
+            <Link to="/edit">
+              <Problem />
+            </Link>
+
+            <Link to="/edit">
+              <Problem />
+            </Link>
           </div>
         </div>
       </div>
