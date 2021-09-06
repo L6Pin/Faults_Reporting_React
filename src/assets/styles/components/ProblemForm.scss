@@ -92,6 +92,31 @@
     padding: 10px 0;
     border: none;
   }
+
+  .report-container {
+    @include flex(row, space-between, center);
+
+    .report {
+      width: 120px;
+      text-align: center;
+      color: $color-white;
+      border-radius: $small-border-radius;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .add {
+      background: $color-blue;
+    }
+
+    .edit {
+      background: $color-orange;
+    }
+
+    .delete {
+      background: $color-red;
+    }
+  }
 }
 
 @media (min-width: 1024px) {
@@ -178,29 +203,29 @@
         border-radius: 0.52vw; //10px;
         padding: 0.52vw 0; //10px
         font-size: 0.83vw; //16px
-        
-        &:hover{
+
+        &:hover {
           cursor: pointer;
         }
       }
 
       .add {
         background: $color-blue;
-        &:hover{
+        &:hover {
           background: darken($color-blue, $amount: 3);
         }
       }
 
       .edit {
         background: $color-orange;
-        &:hover{
+        &:hover {
           background: darken($color-orange, $amount: 3);
         }
       }
 
       .delete {
         background: $color-red;
-        &:hover{
+        &:hover {
           background: darken($color-red, $amount: 3);
         }
       }
