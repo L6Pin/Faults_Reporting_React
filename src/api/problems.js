@@ -36,16 +36,12 @@ export async function problemEdit(editedProblem) {
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(editedProblem),
   });
-  const edit = await response.json();
-  return edit;
 }
 
 export async function problemDelete(id) {
   const response = await fetch(`${apiBaseUrl}/problems/${id}`, {
     method: "DELETE",
   });
-  const remove = await response.json();
-  return remove;
 }
 
 export async function getAllUsers() {

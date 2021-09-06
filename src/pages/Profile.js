@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { getAllProblems } from "../redux/actions/getAllProblemsActions.js";
 import { connect } from "react-redux";
 import { useEffect } from "react";
+import { singleProblemReset } from "../redux/actions/singleProblemAction.js";
 
-const Profile = ({ allProblems, getAllProblems }) => {
+const Profile = ({ allProblems, getAllProblems, singleProblemReset }) => {
   useEffect(() => {
     getAllProblems();
+    singleProblemReset();
   }, [getAllProblems]);
 
   return (
@@ -58,7 +60,7 @@ const Profile = ({ allProblems, getAllProblems }) => {
         <div className="problems">
           <div className="problems-container">
             {allProblems.map((issue) => (
-              <Link to="/edit">
+              <Link to={`/edit/${issue.id}`}>
                 <Problem issue={issue} />
               </Link>
             ))}
@@ -77,6 +79,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   getAllProblems,
+  singleProblemReset,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
