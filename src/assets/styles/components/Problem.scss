@@ -14,11 +14,22 @@
     position: absolute;
     width: 12px;
     height: 100%;
-    background: $color-green;
     left: 0;
     top: 0;
     border-bottom-left-radius: $small-border-radius;
     border-top-left-radius: $small-border-radius;
+  }
+
+  .completed {
+    background: $color-green;
+  }
+
+  .in-process {
+    background: $color-orange;
+  }
+
+  .reported {
+    background: $color-red;
   }
 
   .problem-name {
@@ -32,37 +43,34 @@
     color: $color-light-gray_2;
 
     & span {
-        margin-right: 10px;
-        
-        &:last-of-type{
-          display: none;
-        }
-    }
+      margin-right: 10px;
 
-  
+      &:last-of-type {
+        display: none;
+      }
+    }
   }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
   .problem {
     height: 7.81vw; //120px
-    margin-bottom: 1.30vw; //20px
+    margin-bottom: 1.3vw; //20px
     padding-left: 4.55vw; //70px
     border-radius: 0.65vw; //10px
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
       transform: translateY(-5px);
-      transition: .15s ease-in-out;
+      transition: 0.15s ease-in-out;
       box-shadow: $box-shadow;
     }
 
     .status-indicator {
       position: absolute;
-      width: 2.60vw; //40px
+      width: 2.6vw; //40px
       height: 100%;
-      background: $color-green;
       left: 0;
       top: 0;
       border-bottom-left-radius: 0.65vw; //10px
@@ -74,21 +82,18 @@
       color: $color-dark-gray;
       margin-bottom: 0.65vw; //10px
     }
-  
+
     .problem-info {
       font-size: 1.17vw; //18px
       color: $color-light-gray_2;
-  
+
       & span {
-          margin-right: 1.30vw; //20px
+        margin-right: 1.3vw; //20px
 
-          &:last-of-type{
-            display: inline;
-          }
+        &:last-of-type {
+          display: inline;
+        }
       }
-
     }
   }
-
-
 }
