@@ -3,7 +3,6 @@ import * as problemsApi from "../api/problems";
 import { useLocation, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { Redirect } from "react-router";
 
 const ProblemForm = ({ userData }) => {
   let location = useLocation();
@@ -27,7 +26,7 @@ const ProblemForm = ({ userData }) => {
     problem_name: problemName,
     description: description,
     room: room,
-    comment: "comment",
+    comment: "comment", //The comment feature was not included in this project
     status_id: parseInt(status),
     priority_id: parseInt(priority),
     category_id: parseInt(category),
@@ -37,10 +36,16 @@ const ProblemForm = ({ userData }) => {
 
   let handleReportProblem = (e) => {
     e.preventDefault();
-    problemsApi
-      .problemPost(newProblemObject)
-      .then(() => alert("Issue reported"))
-      .then(() => history.push("/profile"));
+    if (userData.is_admin) {
+      problemsApi.problemPost(newProblemObject);
+    } else {
+      newProblemObject.status_id = 2;
+      newProblemObject.priority_id = 2;
+      newProblemObject.user_id = userData.id;
+      problemsApi.problemPost(newProblemObject);
+    }
+    alert("Issue reported");
+    history.push("/profile");
   };
 
   return (
