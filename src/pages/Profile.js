@@ -1,8 +1,17 @@
 import "../assets/styles/pages/Profile.scss";
 import { Problem } from "../components";
 import { Link } from "react-router-dom";
+import { getAllProblems } from "../redux/actions/getAllProblemsActions.js";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import { singleProblemReset } from "../redux/actions/singleProblemAction.js";
 
-const Profile = () => {
+const Profile = ({ allProblems, getAllProblems, singleProblemReset }) => {
+  useEffect(() => {
+    getAllProblems();
+    singleProblemReset();
+  }, [getAllProblems]);
+
   return (
     <div className="profile">
       <div className="profile-container">
@@ -50,18 +59,11 @@ const Profile = () => {
         </div>
         <div className="problems">
           <div className="problems-container">
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
-            <Problem />
+            {allProblems.map((issue) => (
+              <Link to={`/edit/${issue.id}`}>
+                <Problem issue={issue} />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -69,4 +71,15 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    allProblems: state.getAllProblemsReducer,
+  };
+}
+
+const mapDispatchToProps = {
+  getAllProblems,
+  singleProblemReset,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
