@@ -4,17 +4,9 @@ import { useLocation, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import {
-  getSingleProblem,
-  singleProblemReset,
-} from "../redux/actions/singleProblemAction";
+import { getSingleProblem } from "../redux/actions/singleProblemAction";
 
-const ProblemForm = ({
-  userData,
-  singleProblem,
-  getSingleProblem,
-  singleProblemReset,
-}) => {
+const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
   let location = useLocation();
   let history = useHistory();
   let newProblemObject = {};
@@ -27,7 +19,6 @@ const ProblemForm = ({
 
   useEffect(() => {
     if (location.pathname.includes("/edit")) {
-      singleProblemReset();
       getSingleProblem(urlParams.id);
     }
   }, []);
@@ -62,9 +53,8 @@ const ProblemForm = ({
     user_id: parseInt(userId),
   };
 
-
   let handleReportProblem = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (userData.is_admin) {
       problemsApi.problemPost(newProblemObject);
     } else {
@@ -78,8 +68,8 @@ const ProblemForm = ({
   };
 
   let handleEdit = (e) => {
-    e.preventDefault();
-    newProblemObject.id = singleProblem.id
+    // e.preventDefault();
+    newProblemObject.id = singleProblem.id;
     problemsApi.problemEdit(newProblemObject);
     alert("Issue edited");
     history.push("/profile");
@@ -94,6 +84,15 @@ const ProblemForm = ({
     }
   };
 
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    if (location.pathname.includes("/edit")) {
+      handleEdit();
+    } else {
+      handleReportProblem();
+    }
+  };
+
   console.log(newProblemObject);
 
   return (
@@ -105,7 +104,7 @@ const ProblemForm = ({
         <p className="problem-form-title">Edit issue</p>
       )}
 
-      <form action="" >
+      <form action="" onSubmit={handleSubmit}>
         <div className="input">
           <p className="input-title">Problem name</p>
           <input
@@ -220,14 +219,12 @@ const ProblemForm = ({
 
         <div className="report-container">
           {location.pathname === "/report" && (
-            <button className="report add" onClick={handleReportProblem}>Report</button>
+            <button className="report add">Report</button>
           )}
 
           {location.pathname.includes("/edit") && (
             <>
-              <button className="report edit" onClick={handleEdit}>
-                Edit
-              </button>
+              <button className="report edit">Edit</button>
               <button className="report delete" onClick={handleDeleteProblem}>
                 Delete
               </button>
@@ -248,7 +245,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   getSingleProblem,
-  singleProblemReset,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProblemForm);
