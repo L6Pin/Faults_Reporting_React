@@ -9,6 +9,8 @@ import {
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { singleProblemReset } from "../redux/actions/singleProblemAction.js";
+import { userLogout } from "../redux/actions/loginUserAction";
+import { useHistory } from "react-router";
 
 const Profile = ({
   allProblems,
@@ -17,12 +19,14 @@ const Profile = ({
   allProblemsSortByNewest,
   allProblemsSortByOldest,
   userData,
+  userLogout,
 }) => {
   useEffect(() => {
     getAllProblems();
     singleProblemReset();
   }, [getAllProblems]);
 
+  const history = useHistory();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
@@ -62,6 +66,18 @@ const Profile = ({
     }
   };
 
+  let handleSort = (sortValue) =>
+    sortValue === "1"
+      ? allProblemsSortByNewest()
+      : sortValue === "2"
+      ? allProblemsSortByOldest()
+      : "";
+
+  let handleLogout = () => {
+    userLogout();
+    history.push("/");
+  };
+
   return (
     <div className="profile">
       <div className="profile-container">
@@ -74,7 +90,9 @@ const Profile = ({
                 <p>University staff</p>
               </div>
             </div>
-            <i class="fas fa-sign-out-alt"></i>
+            <div className="logout" onClick={handleLogout}>
+              <i class="fas fa-sign-out-alt"></i>
+            </div>
           </div>
           <div className="filters">
             <div className="search-container">
@@ -125,7 +143,7 @@ const Profile = ({
                 value={sort}
                 onChange={(e) => {
                   setSort(e.target.value);
-                  allProblems.reverse();
+                  handleSort(sort);
                 }}
               >
                 <option value="1">Newest first</option>
@@ -174,6 +192,7 @@ const mapDispatchToProps = {
   singleProblemReset,
   allProblemsSortByNewest,
   allProblemsSortByOldest,
+  userLogout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
