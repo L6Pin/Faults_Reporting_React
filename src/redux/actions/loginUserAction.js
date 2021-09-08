@@ -20,6 +20,12 @@ export function loginFailure() {
   };
 }
 
+export function userLogout() {
+  return {
+    type: types.USER_LOGOUT,
+  };
+}
+
 export function userLogin(loginObject) {
   return (dispatch) => {
     dispatch(loginRequest);

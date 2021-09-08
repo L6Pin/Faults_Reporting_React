@@ -93,8 +93,6 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
     }
   };
 
-  console.log(newProblemObject);
-
   return (
     <div className="problem-form">
       {location.pathname === "/report" && (
