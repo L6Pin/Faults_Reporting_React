@@ -8,9 +8,10 @@
   color: $color-dark-gray;
   overflow-y: auto;
 
-  .report-button {
-    display: none;
+  .profile-container{
+    
   }
+
 
   .problem-controls {
     height: 80px;
@@ -21,6 +22,10 @@
     border-radius: $big-border-radius;
     box-shadow: $box-shadow;
     transition: 0.5s ease-in-out;
+
+    .report-button-container{
+      display: none
+    }
 
     .user {
       @include flex(row, space-between, center);
@@ -163,6 +168,10 @@
         box-shadow: unset;
         padding: unset;
         @include flex(column, unset, unset);
+
+        .report-button-container{
+          display: block;
+        }
 
         .user {
           background: $color-white;

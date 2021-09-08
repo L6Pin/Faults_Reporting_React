@@ -221,7 +221,7 @@ const Profile = ({
                 <div className="filter-arrow"></div>
               </div>
             </div>
-            <Link to="/report">
+            <Link to="/report" className="report-button-container">
               <p className="report-button">Report issue</p>
             </Link>
           </div>
