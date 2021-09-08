@@ -60,8 +60,7 @@ const ProblemForm = ({
     user_id: parseInt(userId),
   };
 
-  let handleReportProblem = (e) => {
-    e.preventDefault();
+  let handleReportProblem = () => {
     if (userData.is_admin) {
       problemsApi.problemPost(newProblemObject);
     } else {
@@ -74,8 +73,7 @@ const ProblemForm = ({
     history.push("/profile");
   };
 
-  let handleEdit = (e) => {
-    e.preventDefault();
+  let handleEdit = () => {
     newProblemObject.id = singleProblem.id;
     problemsApi.problemEdit(newProblemObject);
     alert("Issue edited");
