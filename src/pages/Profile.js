@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { singleProblemReset } from "../redux/actions/singleProblemAction.js";
 import { userLogout } from "../redux/actions/loginUserAction";
 import { useHistory } from "react-router";
+import { getAllUsers } from "../redux/actions/getAllUsersAction";
 
 const Profile = ({
   allProblems,
@@ -20,17 +21,22 @@ const Profile = ({
   allProblemsSortByOldest,
   userData,
   userLogout,
+  getAllUsers,
+  allUsers,
 }) => {
   useEffect(() => {
     getAllProblems();
+    getAllUsers();
     singleProblemReset();
-  }, [getAllProblems, singleProblemReset]);
+  }, [getAllProblems, singleProblemReset, getAllUsers]);
 
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
   const [sort, setSort] = useState("1");
+  const [user, setUser] = useState("");
+  const [expandFilters, setExpandFilters] = useState(false);
 
   let searchFilter = (issue, search) => {
     let problemInfo =
@@ -58,6 +64,16 @@ const Profile = ({
     }
   };
 
+  let userFilter = (assigned_to_id, user) => {
+    if (user === "") {
+      return true;
+    } else {
+      if (assigned_to_id === parseInt(user)) {
+        return true;
+      }
+    }
+  };
+
   let checkUser = (issue) => {
     if (userData.is_admin) {
       return true;
@@ -80,12 +96,24 @@ const Profile = ({
     history.push("/");
   };
 
+  let handleOpenFilters = () => {
+    if (expandFilters) {
+      if (userData.is_admin) {
+        return "problem-controls problem-controls-admin";
+      } else {
+        return "problem-controls problem-controls-user";
+      }
+    }
+  };
+
   return (
     <>
       {allProblems.length <= 0 && <Loader />}
       <div className="profile">
         <div className="profile-container">
-          <div className="problem-controls">
+          <div
+            className={expandFilters ? handleOpenFilters() : "problem-controls"}
+          >
             <div className="user">
               <div className="user-container">
                 <i class="fas fa-user-circle "></i>
@@ -94,8 +122,20 @@ const Profile = ({
                   <p>University staff</p>
                 </div>
               </div>
-              <div className="logout" onClick={handleLogout}>
-                <i class="fas fa-sign-out-alt"></i>
+              <div className="controls-buttons">
+                <div
+                  className={
+                    expandFilters
+                      ? "filter-button filter-button-open"
+                      : "filter-button "
+                  }
+                  onClick={() => setExpandFilters(!expandFilters)}
+                >
+                  <i class="fas fa-filter"></i>
+                </div>
+                <div className="logout" onClick={handleLogout}>
+                  <i class="fas fa-sign-out-alt"></i>
+                </div>
               </div>
             </div>
             <div className="filters">
@@ -107,7 +147,43 @@ const Profile = ({
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-              <p className="filter-title">Issue Filters</p>
+
+              <div className="filter">
+                <p className="filter-name">Sort</p>
+                <select
+                  name=""
+                  id=""
+                  className="filter-options"
+                  value={sort}
+                  onChange={(e) => {
+                    setSort(e.target.value);
+                    handleSort(sort);
+                  }}
+                >
+                  <option value="1">Newest first</option>
+                  <option value="2">Oldest first</option>
+                </select>
+                <div className="filter-arrow"></div>
+              </div>
+              {userData.is_admin && (
+                <div className="filter">
+                  <p className="filter-name">User</p>
+                  <select
+                    name=""
+                    id=""
+                    className="filter-options"
+                    onChange={(e) => setUser(e.target.value)}
+                  >
+                    <option value=""></option>
+                    {allUsers.map((user) => (
+                      <option
+                        value={user.id}
+                      >{`${user.first_name} ${user.last_name}`}</option>
+                    ))}
+                  </select>
+                  <div className="filter-arrow"></div>
+                </div>
+              )}
               <div className="filter">
                 <p className="filter-name">Status</p>
                 <select
@@ -138,23 +214,6 @@ const Profile = ({
                 </select>
                 <div className="filter-arrow"></div>
               </div>
-              <div className="filter">
-                <p className="filter-name">Sort</p>
-                <select
-                  name=""
-                  id=""
-                  className="filter-options"
-                  value={sort}
-                  onChange={(e) => {
-                    setSort(e.target.value);
-                    handleSort(sort);
-                  }}
-                >
-                  <option value="1">Newest first</option>
-                  <option value="2">Oldest first</option>
-                </select>
-                <div className="filter-arrow"></div>
-              </div>
             </div>
             <Link to="/report">
               <p className="report-button">Report issue</p>
@@ -167,11 +226,13 @@ const Profile = ({
                   if (priorityFilter(issue.priority_id, priority)) {
                     if (statusFilter(issue.status_id, status)) {
                       if (checkUser(issue)) {
-                        return (
-                          <Link to={`/edit/${issue.id}`}>
-                            <Problem issue={issue} />
-                          </Link>
-                        );
+                        if (userFilter(issue.assigned_to_id, user)) {
+                          return (
+                            <Link to={`/edit/${issue.id}`}>
+                              <Problem issue={issue} />
+                            </Link>
+                          );
+                        }
                       }
                     }
                   }
@@ -190,6 +251,7 @@ function mapStateToProps(state) {
   return {
     allProblems: state.getAllProblemsReducer,
     userData: state.loginUserReducer,
+    allUsers: state.getAllUsersReducer,
   };
 }
 
@@ -199,6 +261,7 @@ const mapDispatchToProps = {
   allProblemsSortByNewest,
   allProblemsSortByOldest,
   userLogout,
+  getAllUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
