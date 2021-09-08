@@ -141,13 +141,14 @@
       }
 
       input {
-        height: 1.45vw; //28px
+        height: 2.133vw; //32px
         width: 100%;
-        padding: 10px;
+        padding: 0.651vw; //10px
         border-radius: 0.52vw; //10px;
         border: 0;
         outline: none;
         background: $color-light-gray_1;
+        font-size: 0.91vw; //15px
       }
     }
 
@@ -160,20 +161,21 @@
       }
 
       .filter-options {
-        height: 1.45vw; //28px
-        font-size: 0.625vw; //12px
+        height: 2.133vw; //32px
+        font-size: 0.91vw; //15px
         padding: 0.26vw; //5px
       }
 
       .filter-arrow {
-        height: 1.45vw; //28px
-        width: 1.19vw; //23px
-        right: -0.23vw; //-4.5pxx
+        height: 2.133vw;
+        width: 2.19vw;
+        right: -0.976vw; //-15px
       }
     }
 
     .textarea {
       margin-bottom: 1.04vw; //20px
+      font-size: 0.91vw; //15px
 
       .textarea-title {
         margin-bottom: 0.52vw; //10px;

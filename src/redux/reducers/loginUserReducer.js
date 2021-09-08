@@ -13,6 +13,8 @@ export default function loginUserReducer(
     case types.LOGIN_FAILURE:
       alert("Incorrect login data");
       return state;
+    case types.USER_LOGOUT:
+      return null;
     default:
       return state;
   }

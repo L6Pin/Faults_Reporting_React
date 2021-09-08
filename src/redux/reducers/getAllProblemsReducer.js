@@ -9,23 +9,14 @@ export default function getAllProblemsReducer(
     case types.ALL_PROBLEMS_REQUEST:
       return state;
     case types.ALL_PROBLEMS_SUCCESS:
-      console.log(action.response);
       return action.response;
     case types.ALL_PROBLEMS_FAILURE:
       console.log("Problem getting all Problems!");
       return state;
     case types.ALL_PROBLEMS_SORT_BY_OLDEST:
-      let newState = action.response;
-      newState.reverse();
-      return [
-        ...newState
-      ];
+      return [...state].reverse();
     case types.ALL_PROBLEMS_SORT_BY_NEWEST:
-      let newStatee = action.response;
-      newStatee.reverse();
-      return [
-        ...newStatee
-      ];
+      return [...state].reverse();
     default:
       return state;
   }
