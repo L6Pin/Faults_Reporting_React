@@ -8,6 +8,10 @@
   color: $color-dark-gray;
   overflow-y: auto;
 
+  .report-button {
+    display: none;
+  }
+
   .problem-controls {
     height: 80px;
     padding: 20px;
@@ -41,14 +45,18 @@
       }
 
       .controls-buttons {
-        @include flex(row);
+        @include flex(row, space-between);
+        width: 100px;
 
         .filter-button-open {
           color: $color-blue;
         }
 
+        .report-button-mobile {
+          color: $color-dark-gray;
+        }
+
         .logout {
-          margin-left: 20px;
           .fa-sign-out-alt {
             font-size: 20px;
             color: $color-red;
@@ -58,7 +66,6 @@
     }
 
     .filters {
-      margin-bottom: 40px;
       .search {
         border: 0;
         outline: 0;
@@ -71,7 +78,6 @@
         margin-bottom: 10px;
         font-size: 16px;
       }
-
 
       .filter {
         position: relative;
@@ -91,6 +97,7 @@
           -webkit-appearance: none; /* Safari and Chrome */
           appearance: none;
           padding: 5px;
+          position: relative;
         }
         .filter-arrow {
           background: url("../../images/select_arrow.svg");
@@ -117,12 +124,12 @@
   }
 
   .problem-controls-user {
-    height: 477.6px;
+    height: 402.6px;
     transition: 0.5s ease-in-out;
   }
 
   .problem-controls-admin {
-    height: 562px;
+    height: 486.8px;
     transition: 0.5s ease-in-out;
   }
 
@@ -189,6 +196,10 @@
           }
 
           .controls-buttons {
+            .report-button-mobile {
+              display: none;
+            }
+
             .filter-button {
               display: none;
             }
@@ -204,7 +215,7 @@
 
           .search-container {
             margin-bottom: 0.65vw; //10px
-            
+
             .search {
               height: unset;
               padding: 0.97vw; //15px;
@@ -212,8 +223,6 @@
               margin-bottom: 0.65vw;
             }
           }
-
-       
 
           .filter {
             margin-bottom: 1.3vw; //20px

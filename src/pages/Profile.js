@@ -122,7 +122,13 @@ const Profile = ({
                   <p>University staff</p>
                 </div>
               </div>
+
               <div className="controls-buttons">
+                <Link to="/report">
+                  <div className="report-button-mobile">
+                    <i class="fas fa-plus"></i>
+                  </div>
+                </Link>
                 <div
                   className={
                     expandFilters

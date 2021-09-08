@@ -45,7 +45,7 @@ const Problem = ({ issue }) => {
       <p className="problem-name">{issue.problem_name}</p>
       <div className="problem-info">
         <span>
-          Time: {moment(issue.created_at).utcOffset("+0400").format("hh:mm")}h
+          Time: {moment(issue.created_at).utcOffset("+0400").format("HH:mm")}h
         </span>
         <span>Date: {moment(issue.created_at).format("DD-MM-YYYY")}</span>
         <span>Priority: {renderPriority()}</span>
