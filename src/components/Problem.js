@@ -44,7 +44,6 @@ const Problem = ({ issue }) => {
       ></div>
       <p className="problem-name">{issue.problem_name}</p>
       <div className="problem-info">
-        {/* <span>Time: {moment(issue.created_at).local().format("hh:mm")}h</span> */}
         <span>
           Time: {moment(issue.created_at).utcOffset("+0400").format("hh:mm")}h
         </span>

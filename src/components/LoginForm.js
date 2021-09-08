@@ -1,6 +1,6 @@
 import "../assets/styles/components/LoginForm.scss";
 import faculty_logo from "../assets/images/faculty_logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userLogin } from "../redux/actions/loginUserAction";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
@@ -9,7 +9,19 @@ import { Loader } from "../components";
 const LoginForm = ({ userData, userLogin }) => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
-  const [viewLoader, setViewLoader] = useState(false)
+  const [viewLoader, setViewLoader] = useState(false);
+  const [helloMessage, setHelloMessage] = useState("");
+
+  useEffect(() => greetingMessage(), []);
+
+  let greetingMessage = () => {
+    let date = new Date();
+    let currentHour = date.getHours();
+    if (currentHour >= 0 && currentHour <= 11) setHelloMessage("Good Morning!");
+    else if (currentHour >= 12 && currentHour <= 17)
+      setHelloMessage("Good Afternoon!");
+    else setHelloMessage("Good Evening!");
+  };
 
   let userLoginObject = {
     email: email,
@@ -18,7 +30,7 @@ const LoginForm = ({ userData, userLogin }) => {
 
   let handleSubmit = (e) => {
     e.preventDefault();
-    setViewLoader(true)
+    setViewLoader(true);
     userLogin(userLoginObject);
   };
   if (userData) {
@@ -35,7 +47,7 @@ const LoginForm = ({ userData, userLogin }) => {
               <p>Faculty of Technical Sciences Cacak</p>
             </div>
           </div>
-          <p className="greeting-message">Good Afternoon!</p>
+          <p className="greeting-message">{helloMessage}</p>
           <form action="" onSubmit={handleSubmit}>
             <div className="email-container">
               <p>Email</p>
