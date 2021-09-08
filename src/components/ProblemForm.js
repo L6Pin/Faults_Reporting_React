@@ -21,7 +21,7 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
     if (location.pathname.includes("/edit")) {
       getSingleProblem(urlParams.id);
     }
-  }, []);
+  }, [getSingleProblem, location.pathname, urlParams.id]);
 
   useEffect(() => {
     setProblemName(singleProblem?.problem_name);

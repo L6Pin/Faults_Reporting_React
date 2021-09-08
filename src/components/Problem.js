@@ -1,5 +1,4 @@
 import "../assets/styles/components/Problem.scss";
-import moment from "moment";
 
 const Problem = ({ issue }) => {
   var moment = require("moment-timezone");
@@ -12,6 +11,8 @@ const Problem = ({ issue }) => {
         return "Medium";
       case "Visoki":
         return "High";
+      default:
+        return "";
     }
   };
 
@@ -23,6 +24,8 @@ const Problem = ({ issue }) => {
         return "In process";
       case "Resen":
         return "Completed";
+      default:
+        return "";
     }
   };
 

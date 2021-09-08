@@ -23,7 +23,7 @@ export async function getSingleProblem(id) {
 }
 
 export async function problemPost(newProblem) {
-  const response = await fetch(`${apiBaseUrl}/problems`, {
+  await fetch(`${apiBaseUrl}/problems`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(newProblem),
@@ -31,7 +31,7 @@ export async function problemPost(newProblem) {
 }
 
 export async function problemEdit(editedProblem) {
-  const response = await fetch(`${apiBaseUrl}/problems`, {
+  await fetch(`${apiBaseUrl}/problems`, {
     method: "PUT",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(editedProblem),
@@ -39,7 +39,7 @@ export async function problemEdit(editedProblem) {
 }
 
 export async function problemDelete(id) {
-  const response = await fetch(`${apiBaseUrl}/problems/${id}`, {
+  await fetch(`${apiBaseUrl}/problems/${id}`, {
     method: "DELETE",
   });
 }
