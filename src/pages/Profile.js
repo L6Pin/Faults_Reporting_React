@@ -1,5 +1,5 @@
 import "../assets/styles/pages/Profile.scss";
-import { Problem, ProblemForm } from "../components";
+import { Problem } from "../components";
 import { Link } from "react-router-dom";
 import {
   getAllProblems,
@@ -24,7 +24,7 @@ const Profile = ({
   useEffect(() => {
     getAllProblems();
     singleProblemReset();
-  }, [getAllProblems]);
+  }, [getAllProblems, singleProblemReset]);
 
   const history = useHistory();
   const [search, setSearch] = useState("");
@@ -172,6 +172,7 @@ const Profile = ({
                   }
                 }
               }
+              return null
             })}
           </div>
         </div>
