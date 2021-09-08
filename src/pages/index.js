@@ -1,5 +1,6 @@
 import LoginPage from "./LoginPage";
 import Profile from "./Profile";
-import Issue from "./Issue"
+import Issue from "./Issue";
+import RouteGuard from "./RouteGuard";
 
-export { LoginPage, Profile, Issue };
+export { LoginPage, Profile, Issue, RouteGuard };
