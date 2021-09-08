@@ -6,17 +6,23 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getSingleProblem } from "../redux/actions/singleProblemAction";
 import { Loader } from "../components";
+import { getAllUsers } from "../redux/actions/getAllUsersAction";
 
-const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
+const ProblemForm = ({
+  userData,
+  singleProblem,
+  getSingleProblem,
+  allUsers,
+  getAllUsers,
+}) => {
   let location = useLocation();
   let history = useHistory();
   let newProblemObject = {};
   let urlParams = useParams();
-  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    problemsApi.getAllUsers().then((response) => setUsers(response));
-  }, []);
+    getAllUsers();
+  }, [getAllUsers]);
 
   useEffect(() => {
     if (location.pathname.includes("/edit")) {
@@ -55,11 +61,11 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
   };
 
   let handleReportProblem = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (userData.is_admin) {
       problemsApi.problemPost(newProblemObject);
     } else {
-      newProblemObject.status_id = 2;
+      newProblemObject.status_id = 1;
       newProblemObject.priority_id = 2;
       newProblemObject.user_id = userData.id;
       problemsApi.problemPost(newProblemObject);
@@ -69,15 +75,14 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
   };
 
   let handleEdit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     newProblemObject.id = singleProblem.id;
     problemsApi.problemEdit(newProblemObject);
     alert("Issue edited");
     history.push("/profile");
   };
 
-  let handleDeleteProblem = (e) => {
-    e.preventDefault();
+  let handleDeleteProblem = () => {
     if (window.confirm("Are you sure you want to delete this issue?")) {
       problemsApi.problemDelete(urlParams.id);
       alert("Issue Successfuly deleted");
@@ -94,15 +99,9 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
     }
   };
 
-  console.log(singleProblem)
-
   return (
     <>
-      {
-        location.pathname.includes("/edit") && (
-          !singleProblem && <Loader />
-        )
-      }
+      {location.pathname.includes("/edit") && !singleProblem && <Loader />}
       <div className="problem-form">
         {location.pathname === "/report" && (
           <p className="problem-form-title">Report issue</p>
@@ -203,7 +202,7 @@ const ProblemForm = ({ userData, singleProblem, getSingleProblem }) => {
                 onChange={(e) => setUserId(e.target.value)}
               >
                 <option value=""></option>
-                {users.map((user) => (
+                {allUsers.map((user) => (
                   <option
                     value={user.id}
                   >{`${user.first_name} ${user.last_name}`}</option>
@@ -248,11 +247,13 @@ function mapStateToProps(state) {
   return {
     userData: state.loginUserReducer,
     singleProblem: state.singleProblemReducer,
+    allUsers: state.getAllUsersReducer,
   };
 }
 
 const mapDispatchToProps = {
   getSingleProblem,
+  getAllUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProblemForm);

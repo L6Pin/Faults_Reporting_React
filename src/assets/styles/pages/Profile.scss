@@ -9,19 +9,22 @@
   overflow-y: auto;
 
   .problem-controls {
-    height: 467px;
+    height: 80px;
     padding: 20px;
     margin-bottom: 20px;
+    overflow: hidden;
     background: $color-white;
     border-radius: $big-border-radius;
     box-shadow: $box-shadow;
+    transition: 0.5s ease-in-out;
 
     .user {
       @include flex(row, space-between, center);
-      margin-bottom: 10px;
+      margin-bottom: 20px;
 
       .user-container {
         @include flex(row, unset, center);
+
         .fa-user-circle {
           font-size: 40px;
           color: $color-dark-gray;
@@ -37,9 +40,20 @@
         }
       }
 
-      .fa-sign-out-alt {
-        font-size: 20px;
-        color: $color-red;
+      .controls-buttons {
+        @include flex(row);
+
+        .filter-button-open {
+          color: $color-blue;
+        }
+
+        .logout {
+          margin-left: 20px;
+          .fa-sign-out-alt {
+            font-size: 20px;
+            color: $color-red;
+          }
+        }
       }
     }
 
@@ -58,9 +72,6 @@
         font-size: 16px;
       }
 
-      .filter-title {
-        display: none;
-      }
 
       .filter {
         position: relative;
@@ -105,6 +116,16 @@
     }
   }
 
+  .problem-controls-user {
+    height: 477.6px;
+    transition: 0.5s ease-in-out;
+  }
+
+  .problem-controls-admin {
+    height: 562px;
+    transition: 0.5s ease-in-out;
+  }
+
   .problems {
     height: 80vh;
     overflow-y: auto;
@@ -126,6 +147,7 @@
       height: 100%;
       padding: 1.3vw; //20px;
       box-shadow: $box-shadow;
+      transition: unset;
 
       .problem-controls {
         width: 23%;
@@ -165,6 +187,12 @@
               }
             }
           }
+
+          .controls-buttons {
+            .filter-button {
+              display: none;
+            }
+          }
         }
 
         .filters {
@@ -176,7 +204,7 @@
 
           .search-container {
             margin-bottom: 0.65vw; //10px
-            border-bottom: 0.065vw solid $color-light-gray_2; //1px
+            
             .search {
               height: unset;
               padding: 0.97vw; //15px;
@@ -185,11 +213,7 @@
             }
           }
 
-          .filter-title {
-            display: block;
-            font-size: 1.17vw; //18px
-            margin-bottom: 0.97vw; //15px;
-          }
+       
 
           .filter {
             margin-bottom: 1.3vw; //20px

@@ -1,7 +1,8 @@
 const initialState = {
-    allProblems: [],
-    userProfile: null,
-    singleProblem: null
-  };
-  
-  export default initialState;
+  allProblems: [],
+  allUsers: [],
+  userProfile: null,
+  singleProblem: null,
+};
+
+export default initialState;
