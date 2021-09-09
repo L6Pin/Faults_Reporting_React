@@ -1,4 +1,4 @@
-<a href="http://odsrca.rf.gd/"><h1>Faculty Faults Reporting</h1></a>
+<a href="https://ftn-faults-reporting.vercel.app/"><h1>Faculty Faults Reporting</h1></a>
 
 <h2>Project Overview</h2>
 <p> 
@@ -11,8 +11,8 @@ Web application created for the faculty where I am studying in order to keep tra
 <p>The design was inspired by the look and feel of iOS, Deepin linux distribution and MIUI custom android rom.</p>
 <p>The colors chosen were the following:</p>
 <ul>
-    <li>Blue (##007ce1)</li>
-    <li>Green (##28cd41)</li>
+    <li>Blue (#007ce1)</li>
+    <li>Green (#28cd41)</li>
     <li>Red (#ff3b30)</li>
     <li>Orange (#f58b00)</li>
     <li>Dark gray (#333333)</li>
