@@ -229,9 +229,9 @@ const ProblemForm = ({
             {location.pathname.includes("/edit") && (
               <>
                 <button className="report edit">Edit</button>
-                <button className="report delete" onClick={handleDeleteProblem}>
+                <p className="report delete" onClick={handleDeleteProblem}>
                   Delete
-                </button>
+                </p>
               </>
             )}
           </div>
