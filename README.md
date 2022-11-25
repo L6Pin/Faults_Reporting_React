@@ -1,4 +1,5 @@
-<a href="https://ftn-faults-reporting.vercel.app/"><h1>Faculty Faults Reporting</h1></a>
+<h1>Faculty Faults Reporting</h1>
+https://ftn-faults-reporting.vercel.app/
 
 <h2>Login data</h2>
 
