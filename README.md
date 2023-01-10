@@ -1,4 +1,4 @@
-<h1>Faculty Faults Reporting</h1>
+<h1>Faculty Faults reporting</h1>
 https://ftn-faults-reporting.vercel.app/
 
 <h2>Login data</h2>
