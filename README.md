@@ -17,7 +17,7 @@ Users login:
 
 <h2>Project Overview</h2>
 <p> 
-Web application created for the faculty where I am studying in order to keep track of and report faults that are found by faculty staff. Created with React that uses Redux, SCSS and the knowledge gained from my summer internship and represents my thesis work.
+Web application created for the faculty where I was studying in order to keep track of and report faults that are found by faculty staff. Created with React that uses Redux, SCSS and the knowledge gained from my summer internship and represents my thesis work.
 
 The admin can see and filter all the problems that have been reported, and edit all of their properties.
 <br />
